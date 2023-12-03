@@ -13,7 +13,11 @@ public class Khoa {
     private String maKhoa;
     private String tenKhoa;
 
+    // một khoa có nhiều môn học
+    // mappedBy = "tên của biến khoa mà để trong môn học"
+    // JsonManagedReference => tạo lên kết sang
     @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
+//    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Monhoc> monhocs;
 

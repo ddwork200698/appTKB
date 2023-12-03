@@ -25,10 +25,10 @@ public class Database {
                 Khoa chinhTri = new Khoa();
                 Monhoc monA = new Monhoc();
                 monA.setMaMonhoc("CME 1001");
-                monA.setName("Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam");
+                monA.setTenMonhoc("Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam");
                 Monhoc monB = new Monhoc();
                 monB.setMaMonhoc("CME 1002");
-                monB.setName("Công tác Quốc phòng và An ninh");
+                monB.setTenMonhoc("Công tác Quốc phòng và An ninh");
 
                 Set<Monhoc> dsMonhoc =  new HashSet();
                 dsMonhoc.add(monA);

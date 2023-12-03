@@ -3,8 +3,6 @@ package com.doubleD.TKB.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-import java.util.Set;
-
 @Entity
 @Table(name = "tbMonhoc")
 public class Monhoc {
@@ -12,7 +10,11 @@ public class Monhoc {
     @Column(name = "mamonhoc")
     private String maMonhoc;
 
-    private String name;
+    private String tenMonhoc;
+
+    // nhiều môn học trong 1 khoa
+    // tenMonhoc = "tên của biến mà lấy làm khóa phụ"
+    // JsonBackReference => tạo lên kết sang
 
     @ManyToOne
     @JoinColumn(name = "makhoa", nullable = false, referencedColumnName = "makhoa")
@@ -22,9 +24,9 @@ public class Monhoc {
     public Monhoc() {
     }
 
-    public Monhoc(String maMonhoc, String name, Khoa khoa) {
+    public Monhoc(String maMonhoc, String tenMonhoc, Khoa khoa) {
         this.maMonhoc = maMonhoc;
-        this.name = name;
+        this.tenMonhoc = tenMonhoc;
         this.khoa = khoa;
     }
 
@@ -36,12 +38,12 @@ public class Monhoc {
         this.maMonhoc = maMonhoc;
     }
 
-    public String getName() {
-        return name;
+    public String getTenMonhoc() {
+        return tenMonhoc;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTenMonhoc(String tenMonhoc) {
+        this.tenMonhoc = tenMonhoc;
     }
 
     public Khoa getKhoa() {
