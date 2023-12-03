@@ -1,6 +1,8 @@
 package com.doubleD.TKB.database;
 
 import com.doubleD.TKB.models.Khoa;
+import com.doubleD.TKB.models.Monhoc;
+import com.doubleD.TKB.repositories.MonhocRepository;
 import com.doubleD.TKB.service.Impl.KhoaServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,17 +10,37 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Configuration
 public class Database {
 
     private static final Logger logger = LoggerFactory.getLogger(Database.class);
     @Bean
-    CommandLineRunner initDatabase (KhoaServiceImpl khoaServiceImpl) {
+    CommandLineRunner initDatabase (KhoaServiceImpl khoaServiceImpl, MonhocRepository monhocRepository) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-                Khoa khoa1 = new Khoa();
-                logger.info("Luu khoa1: "+ khoaServiceImpl.saveKhoa(khoa1));
+                Khoa chinhTri = new Khoa();
+                Monhoc monA = new Monhoc();
+                monA.setMaMonhoc("CME 1001");
+                monA.setName("Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam");
+                Monhoc monB = new Monhoc();
+                monB.setMaMonhoc("CME 1002");
+                monB.setName("Công tác Quốc phòng và An ninh");
+
+                Set<Monhoc> dsMonhoc =  new HashSet();
+                dsMonhoc.add(monA);
+                dsMonhoc.add(monB);
+
+                chinhTri.setMonhocs(dsMonhoc);
+                monA.setKhoa(chinhTri);
+                monB.setKhoa(chinhTri);
+
+                logger.info("Luu khoa CT: "+ khoaServiceImpl.saveKhoa(chinhTri));
+                logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monA));
+                logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monB));
             }
         };
     }
