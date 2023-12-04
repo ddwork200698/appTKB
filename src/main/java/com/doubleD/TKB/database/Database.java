@@ -41,6 +41,27 @@ public class Database {
                 logger.info("Luu khoa CT: "+ khoaServiceImpl.saveKhoa(chinhTri));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monA));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monB));
+
+                Khoa quanSu = new Khoa("QS", "Quân sự");
+                Monhoc monC = new Monhoc();
+                monC.setMaMonhoc("CME 1003");
+                monC.setTenMonhoc("Quân sự chung");
+                Monhoc monD = new Monhoc();
+                monD.setMaMonhoc("CME 1004");
+                monD.setTenMonhoc("Kỹ thuật chiến đầu bộ binh và chiến thuật");
+
+                Set<Monhoc> dsMonhoc2 = new HashSet();
+                dsMonhoc2.add(monC);
+                dsMonhoc2.add(monD);
+
+                quanSu.setMonhocs(dsMonhoc2);
+                monC.setKhoa(quanSu);
+                monD.setKhoa(quanSu);
+
+                logger.info("Luu khoa QS: "+ khoaServiceImpl.saveKhoa(quanSu));
+                logger.info("Luu khoa Mon C : "+ monhocRepository.save(monC));
+                logger.info("Luu khoa Mon D: "+ monhocRepository.save(monD));
+
             }
         };
     }

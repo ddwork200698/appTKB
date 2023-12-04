@@ -1,6 +1,7 @@
 package com.doubleD.TKB.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,7 +19,8 @@ public class Monhoc {
 
     @ManyToOne
     @JoinColumn(name = "makhoa", nullable = false, referencedColumnName = "makhoa")
-    @JsonBackReference
+    @JsonManagedReference
+//    @JsonBackReference
     private Khoa khoa;
 
     public Monhoc() {
@@ -29,7 +31,6 @@ public class Monhoc {
         this.tenMonhoc = tenMonhoc;
         this.khoa = khoa;
     }
-
     public String getMaMonhoc() {
         return maMonhoc;
     }

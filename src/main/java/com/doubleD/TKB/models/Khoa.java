@@ -1,5 +1,6 @@
 package com.doubleD.TKB.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -18,12 +19,18 @@ public class Khoa {
     // JsonManagedReference => tạo lên kết sang
     @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
 //    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
+//    @JsonManagedReference
     private Set<Monhoc> monhocs;
 
     public Khoa() {
         this.setMaKhoa("CT");
         this.setTenKhoa("Chinh tri");
+    }
+
+    public Khoa(String maKhoa, String tenKhoa) {
+        this.maKhoa = maKhoa;
+        this.tenKhoa = tenKhoa;
     }
 
     public Khoa(String maKhoa, String tenKhoa, Set<Monhoc> monhocs) {
