@@ -30,8 +30,4 @@ public class ThaygiaoServiceImpl implements ThaygiaoService {
         return thaygiaoRepository.save(thaygiao);
     }
 
-    @Override
-    public Set<Thaygiao> getAllThaygiaoByKhoa(String makhoa) {
-        return thaygiaoRepository.getAllThaygiaoByKhoa(makhoa);
-    }
 }

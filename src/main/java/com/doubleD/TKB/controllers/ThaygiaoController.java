@@ -23,8 +23,4 @@ public class ThaygiaoController {
     }
 
     // lay thong tin http://localhost:8080/Monhoc/
-    @GetMapping("/getInfoThaygiao/{id}")
-    Optional<Thaygiao> getInfoThaygiao(@PathVariable Long id){
-        return thaygiaoService.getInfoThaygiao(id);
-    }
 }

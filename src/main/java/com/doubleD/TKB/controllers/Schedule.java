@@ -1,5 +1,6 @@
 package com.doubleD.TKB.controllers;
 
+import com.doubleD.TKB.models.Khoa;
 import com.doubleD.TKB.models.Thaygiao;
 import com.doubleD.TKB.service.impl.ThaygiaoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,5 @@ public class Schedule {
     @Autowired
     com.doubleD.TKB.service.Impl.MonhocServiceImpl monhocService;
 
-    @GetMapping("/getAllThaygiao/{maKhoa}")
-    Set<Thaygiao> getAllThaygiaoCT (@PathVariable String maKhoa){
-        return thaygiaoService.getAllThaygiaoByKhoa("CT");
-    }
 
 }

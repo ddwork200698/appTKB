@@ -12,6 +12,4 @@ import java.util.Set;
 public interface ThaygiaoRepository extends JpaRepository<Thaygiao, Long> {
     Thaygiao save (Thaygiao thaygiao);
 
-    @Query(value = "SELECT * FROM tbThaygiao WHERE makhoa = :maKhoa", nativeQuery = true)
-    Set<Thaygiao>getAllThaygiaoByKhoa(@Param("makhoa")String maKhoa);
 }

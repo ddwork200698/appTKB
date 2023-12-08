@@ -14,5 +14,4 @@ public interface ThaygiaoService {
     List<Thaygiao> getAllThaygiao();
     Optional<Thaygiao> getInfoThaygiao(Long id);
     Thaygiao save(Thaygiao thaygiao);
-    Set<Thaygiao> getAllThaygiaoByKhoa(String makhoa);
 }
