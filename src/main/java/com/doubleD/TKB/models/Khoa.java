@@ -18,10 +18,14 @@ public class Khoa {
     // mappedBy = "tên của biến khoa mà để trong môn học"
     // JsonManagedReference => tạo lên kết sang
     @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
-//    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
     @JsonBackReference
 //    @JsonManagedReference
     private Set<Monhoc> monhocs;
+
+    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
+    @JsonBackReference
+//    @JsonManagedReference
+    private Set<Thaygiao> thaygiaos;
 
     public Khoa() {
         this.setMaKhoa("CT");
@@ -61,5 +65,13 @@ public class Khoa {
 
     public void setMonhocs(Set<Monhoc> monhocs) {
         this.monhocs = monhocs;
+    }
+
+    public Set<Thaygiao> getThaygiaos() {
+        return thaygiaos;
+    }
+
+    public void setThaygiaos(Set<Thaygiao> thaygiaos) {
+        this.thaygiaos = thaygiaos;
     }
 }

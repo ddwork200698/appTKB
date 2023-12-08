@@ -3,9 +3,11 @@ package com.doubleD.TKB.database;
 import com.doubleD.TKB.models.Baihoc;
 import com.doubleD.TKB.models.Khoa;
 import com.doubleD.TKB.models.Monhoc;
+import com.doubleD.TKB.models.Thaygiao;
 import com.doubleD.TKB.repositories.MonhocRepository;
 import com.doubleD.TKB.service.Impl.KhoaServiceImpl;
 import com.doubleD.TKB.service.impl.BaihocServiceImpl;
+import com.doubleD.TKB.service.impl.ThaygiaoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +22,7 @@ public class Database {
 
     private static final Logger logger = LoggerFactory.getLogger(Database.class);
     @Bean
-    CommandLineRunner initDatabase (KhoaServiceImpl khoaServiceImpl, MonhocRepository monhocRepository, BaihocServiceImpl baihocService) {
+    CommandLineRunner initDatabase (KhoaServiceImpl khoaServiceImpl, MonhocRepository monhocRepository, BaihocServiceImpl baihocService, ThaygiaoServiceImpl thaygiaoService) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -167,6 +169,37 @@ public class Database {
                 dsBaihocMonD.add(ktbs);
                 monD.setBaihocs(dsBaihocMonD);
 
+                // Thêm thông tin thầy giáo
+                Thaygiao nva = new Thaygiao("Nguyễn Văn A", chinhTri);
+                Thaygiao nvb = new Thaygiao("Nguyễn Văn B", chinhTri);
+                Thaygiao nvc = new Thaygiao("Nguyễn Văn C", chinhTri);
+                Thaygiao nvd = new Thaygiao("Nguyễn Văn D", chinhTri);
+                Thaygiao nve = new Thaygiao("Nguyễn Văn E", chinhTri);
+
+                Set<Thaygiao> dsThaygiaoCT = new HashSet<>();
+                dsThaygiaoCT.add(nva);
+                dsThaygiaoCT.add(nvb);
+                dsThaygiaoCT.add(nvc);
+                dsThaygiaoCT.add(nve);
+                dsThaygiaoCT.add(nvd);
+
+                chinhTri.setThaygiaos(dsThaygiaoCT);
+
+                Thaygiao lda = new Thaygiao("Lê Duy A", quanSu);
+                Thaygiao ldb = new Thaygiao("Lê Duy B", quanSu);
+                Thaygiao ldc = new Thaygiao("Lê Duy C", quanSu);
+                Thaygiao ldd = new Thaygiao("Lê Duy D", quanSu);
+                Thaygiao lde = new Thaygiao("Lê Duy E", quanSu);
+
+                Set<Thaygiao> dsThaygiaoQS = new HashSet<>();
+                dsThaygiaoQS.add(lda);
+                dsThaygiaoQS.add(ldb);
+                dsThaygiaoQS.add(ldc);
+                dsThaygiaoQS.add(lde);
+                dsThaygiaoQS.add(ldd);
+
+                quanSu.setThaygiaos(dsThaygiaoQS);
+
                 logger.info("Luu khoa CT: "+ khoaServiceImpl.saveKhoa(chinhTri));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monA));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monB));
@@ -220,6 +253,18 @@ public class Database {
                 logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(tb4));
                 logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(nld));
                 logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(ktbs));
+
+                logger.info("Luu danh sach thay giao CT: "+ thaygiaoService.save(nva));
+                logger.info("Luu danh sach thay giao CT: "+ thaygiaoService.save(nvb));
+                logger.info("Luu danh sach thay giao CT: "+ thaygiaoService.save(nvc));
+                logger.info("Luu danh sach thay giao CT: "+ thaygiaoService.save(nvd));
+                logger.info("Luu danh sach thay giao CT: "+ thaygiaoService.save(nve));
+
+                logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(lda));
+                logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(ldb));
+                logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(ldc));
+                logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(ldd));
+                logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(lde));
             }
         };
     }

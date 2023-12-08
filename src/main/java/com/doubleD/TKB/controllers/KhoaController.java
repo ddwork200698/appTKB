@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/khoas")
+@RequestMapping("/khoa")
 public class KhoaController {
     @Autowired
     KhoaServiceImpl khoaServiceImpl;
