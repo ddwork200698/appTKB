@@ -150,6 +150,23 @@ public class Database {
                 Baihoc nld = new Baihoc("NLĐ","Thực hành ném Lựu đạn bài 1b",2, "", monD,"TH");
                 Baihoc ktbs = new Baihoc("KTBS","Kiểm tra môn D sau khi học hết môn D",2, "", monD,"TH");
 
+                Set<Baihoc> dsBaihocMonD = new HashSet<>();
+                dsBaihocMonD.add(d1);
+                dsBaihocMonD.add(d2);
+                dsBaihocMonD.add(d31);
+                dsBaihocMonD.add(d32);
+                dsBaihocMonD.add(d33);
+                dsBaihocMonD.add(d41);
+                dsBaihocMonD.add(d42);
+                dsBaihocMonD.add(d5);
+                dsBaihocMonD.add(tb1);
+                dsBaihocMonD.add(tb2);
+                dsBaihocMonD.add(tb3);
+                dsBaihocMonD.add(tb4);
+                dsBaihocMonD.add(nld);
+                dsBaihocMonD.add(ktbs);
+                monD.setBaihocs(dsBaihocMonD);
+
                 logger.info("Luu khoa CT: "+ khoaServiceImpl.saveKhoa(chinhTri));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monA));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monB));
@@ -189,6 +206,20 @@ public class Database {
                 logger.info("Luu danh sach bai hoc Mon C: "+ baihocService.save(c6));
                 logger.info("Luu danh sach bai hoc Mon C: "+ baihocService.save(c7));
                 logger.info("Luu danh sach bai hoc Mon C: "+ baihocService.save(Thi3));
+
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d1));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d2));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d31));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d32));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d33));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d41));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d42));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(d5));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(tb1));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(tb2));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(tb4));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(nld));
+                logger.info("Luu danh sach bai hoc Mon D: "+ baihocService.save(ktbs));
             }
         };
     }
