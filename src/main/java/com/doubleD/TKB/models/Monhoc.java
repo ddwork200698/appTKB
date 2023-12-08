@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "tbMonhoc")
 public class Monhoc {
@@ -12,6 +14,7 @@ public class Monhoc {
     private String maMonhoc;
 
     private String tenMonhoc;
+
 
     // nhiều môn học trong 1 khoa
     // tenMonhoc = "tên của biến mà lấy làm khóa phụ"
@@ -22,6 +25,11 @@ public class Monhoc {
     @JsonManagedReference
 //    @JsonBackReference
     private Khoa khoa;
+
+    @OneToMany(mappedBy = "monhoc", cascade = CascadeType.ALL)
+    @JsonBackReference
+//    @JsonManagedReference
+    private Set<Baihoc> baihocs;
 
     public Monhoc() {
     }
@@ -53,5 +61,13 @@ public class Monhoc {
 
     public void setKhoa(Khoa khoa) {
         this.khoa = khoa;
+    }
+
+    public Set<Baihoc> getBaihocs() {
+        return baihocs;
+    }
+
+    public void setBaihocs(Set<Baihoc> baihocs) {
+        this.baihocs = baihocs;
     }
 }
