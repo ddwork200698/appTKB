@@ -1,5 +1,6 @@
 package com.doubleD.TKB.models;
 
+import com.doubleD.TKB.repositories.DoituongRepository;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -15,7 +16,6 @@ public class Monhoc {
 
     private String tenMonhoc;
 
-
     // nhiều môn học trong 1 khoa
     // tenMonhoc = "tên của biến mà lấy làm khóa phụ"
     // JsonBackReference => tạo lên kết sang
@@ -30,6 +30,10 @@ public class Monhoc {
     @JsonBackReference
 //    @JsonManagedReference
     private Set<Baihoc> baihocs;
+    @ManyToOne
+    @JoinColumn(name = "madoituong", nullable = false, referencedColumnName = "madoituong")
+    @JsonManagedReference
+    private Doituong doituong;
 
     public Monhoc() {
     }
@@ -69,5 +73,13 @@ public class Monhoc {
 
     public void setBaihocs(Set<Baihoc> baihocs) {
         this.baihocs = baihocs;
+    }
+
+    public Doituong getDoituong() {
+        return doituong;
+    }
+
+    public void setDoituong(Doituong doituong) {
+        this.doituong = doituong;
     }
 }
