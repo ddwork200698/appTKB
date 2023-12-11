@@ -22,10 +22,10 @@ public class Khoa {
 //    @JsonManagedReference
     private Set<Monhoc> monhocs;
 
-    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
-    @JsonBackReference
-//    @JsonManagedReference
-    private Set<Thaygiao> thaygiaos;
+//    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
+//    @JsonBackReference
+////    @JsonManagedReference
+//    private Set<Thaygiao> thaygiaos;
 
     public Khoa() {
         this.setMaKhoa("CT");
@@ -67,11 +67,11 @@ public class Khoa {
         this.monhocs = monhocs;
     }
 
-    public Set<Thaygiao> getThaygiaos() {
-        return thaygiaos;
-    }
-
-    public void setThaygiaos(Set<Thaygiao> thaygiaos) {
-        this.thaygiaos = thaygiaos;
-    }
+//    public Set<Thaygiao> getThaygiaos() {
+//        return thaygiaos;
+//    }
+//
+//    public void setThaygiaos(Set<Thaygiao> thaygiaos) {
+//        this.thaygiaos = thaygiaos;
+//    }
 }
