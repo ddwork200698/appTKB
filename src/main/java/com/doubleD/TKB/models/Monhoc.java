@@ -25,6 +25,12 @@ public class Monhoc {
 //    @JsonBackReference
     private Khoa khoa;
 
+    @ManyToOne
+    @JoinColumn(name = "maDoituong", referencedColumnName = "maDoituong")
+    @JsonManagedReference
+//    @JsonBackReference
+    private Doituong doituong;
+
     @OneToMany(mappedBy = "monhoc", cascade = CascadeType.ALL)
     @JsonBackReference
 //    @JsonManagedReference
@@ -37,6 +43,7 @@ public class Monhoc {
         this.maMonhoc = maMonhoc;
         this.tenMonhoc = tenMonhoc;
         this.khoa = khoa;
+        this.doituong = null;
     }
     public String getMaMonhoc() {
         return maMonhoc;
@@ -70,4 +77,11 @@ public class Monhoc {
         this.baihocs = baihocs;
     }
 
+    public Doituong getDoituong() {
+        return doituong;
+    }
+
+    public void setDoituong(Doituong doituong) {
+        this.doituong = doituong;
+    }
 }

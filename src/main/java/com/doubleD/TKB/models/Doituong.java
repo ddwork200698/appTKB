@@ -12,10 +12,12 @@ public class Doituong {
     @Column(name = "madoituong")
     private String maDoituong;
     private String name;
-
+    @OneToMany(mappedBy = "doituong", cascade = CascadeType.ALL)
+    @JsonBackReference
+//    @JsonManagedReference
+    private Set<Monhoc> monhocs;
     public Doituong() {
     }
-
     public Doituong(String maDoituong, String name) {
         this.maDoituong = maDoituong;
         this.name = name;
@@ -35,6 +37,14 @@ public class Doituong {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Monhoc> getMonhocs() {
+        return monhocs;
+    }
+
+    public void setMonhocs(Set<Monhoc> monhocs) {
+        this.monhocs = monhocs;
     }
 }
 

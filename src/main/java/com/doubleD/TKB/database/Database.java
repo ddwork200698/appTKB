@@ -201,6 +201,12 @@ public class Database {
                 Doituong dh = new Doituong("DHCH", "Đại học cao đẳng");
                 Doituong cap3 = new Doituong("C3", "Cấp 3, trải nghiệm");
                 Doituong gdtx = new Doituong("GDTX", "Giáo dục thường xuyên");
+                Set<Monhoc> dsDh = new HashSet<>();
+                dsDh.add(monA);
+                dsDh.add(monB);
+//                dh.setMonhocs(dsDh);
+                monA.setDoituong(dh);
+                monB.setDoituong(dh);
 
                 logger.info("Luu Doi tuong: "+ doituongRepository.save(dh));
                 logger.info("Luu Doi tuong: "+ doituongRepository.save(cap3));
