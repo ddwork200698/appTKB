@@ -11,9 +11,7 @@ public class Thaygiao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
-
     @ManyToOne
     @JoinColumn(name = "makhoa", nullable = false, referencedColumnName = "makhoa")
     @JsonManagedReference

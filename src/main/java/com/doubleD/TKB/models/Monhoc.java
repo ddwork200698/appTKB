@@ -1,6 +1,5 @@
 package com.doubleD.TKB.models;
 
-import com.doubleD.TKB.repositories.DoituongRepository;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -30,10 +29,6 @@ public class Monhoc {
     @JsonBackReference
 //    @JsonManagedReference
     private Set<Baihoc> baihocs;
-    @ManyToOne
-    @JoinColumn(name = "madoituong", nullable = false, referencedColumnName = "madoituong")
-    @JsonManagedReference
-    private Doituong doituong;
 
     public Monhoc() {
     }
@@ -75,11 +70,4 @@ public class Monhoc {
         this.baihocs = baihocs;
     }
 
-    public Doituong getDoituong() {
-        return doituong;
-    }
-
-    public void setDoituong(Doituong doituong) {
-        this.doituong = doituong;
-    }
 }

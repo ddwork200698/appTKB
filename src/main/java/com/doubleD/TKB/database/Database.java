@@ -1,7 +1,6 @@
 package com.doubleD.TKB.database;
 
 import com.doubleD.TKB.models.*;
-import com.doubleD.TKB.repositories.DoituongRepository;
 import com.doubleD.TKB.repositories.MonhocRepository;
 import com.doubleD.TKB.service.Impl.KhoaServiceImpl;
 import com.doubleD.TKB.service.impl.BaihocServiceImpl;
@@ -21,8 +20,8 @@ public class Database {
     private static final Logger logger = LoggerFactory.getLogger(Database.class);
     @Bean
     CommandLineRunner initDatabase (KhoaServiceImpl khoaServiceImpl, MonhocRepository monhocRepository,
-                                    BaihocServiceImpl baihocService, ThaygiaoServiceImpl thaygiaoService,
-                                    DoituongRepository doituongRepository) {
+                                    BaihocServiceImpl baihocService, ThaygiaoServiceImpl thaygiaoService
+                                    ) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -201,17 +200,17 @@ public class Database {
                 quanSu.setThaygiaos(dsThaygiaoQS);
 
                 // Tao doi tuong
-                Doituong dh = new Doituong();
-                dh.setMaDoituong("DHCD");
-                dh.setName("Đại học, Cao đẳng");
-//                Doituong cap3 = new Doituong("C3", "Trải nghiệm");
-                Set<Monhoc> dsMonhocDH = new HashSet<>();
-                monA.setDoituong(dh);
-                monB.setDoituong(dh);
-                monC.setDoituong(dh);
-                monD.setDoituong(dh);
-                dsMonhocDH.add(monA); dsMonhocDH.add(monB); dsMonhocDH.add(monC); dsMonhocDH.add(monD);
-                dh.setMonhocs(dsMonhocDH);
+//                Doituong dh = new Doituong();
+//                dh.setMaDoituong("DHCD");
+//                dh.setName("Đại học, Cao đẳng");
+////                Doituong cap3 = new Doituong("C3", "Trải nghiệm");
+//                Set<Monhoc> dsMonhocDH = new HashSet<>();
+//                monA.setDoituong(dh);
+//                monB.setDoituong(dh);
+//                monC.setDoituong(dh);
+//                monD.setDoituong(dh);
+//                dsMonhocDH.add(monA); dsMonhocDH.add(monB); dsMonhocDH.add(monC); dsMonhocDH.add(monD);
+//                dh.setMonhocs(dsMonhocDH);
 
                 logger.info("Luu khoa CT: "+ khoaServiceImpl.saveKhoa(chinhTri));
                 logger.info("Luu khoa Mon A, Mon B: "+ monhocRepository.save(monA));
@@ -279,7 +278,6 @@ public class Database {
                 logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(ldd));
                 logger.info("Luu danh sach thay giao QS: "+ thaygiaoService.save(lde));
 
-                logger.info("Luu danh sach doi tuong: "+ doituongRepository.save(dh));
             }
         };
     }
